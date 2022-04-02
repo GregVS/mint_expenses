@@ -24,10 +24,10 @@ transactions: pd.DataFrame = mint.get_detailed_transactions(start_date=start_dat
 transactions = transactions.query('isTransfer == False '
                                   'and mcategory != "Paycheck" '
                                   'and mcategory != "Interest Income" '
+                                  'and mcategory != "Income" '
                                   'and mcategory != "Credit Card Payment" '
                                   'and mcategory != "Investments"')
 
-transactions = transactions.query('fi != "Venmo"')
 transactions = transactions[['date', 'mcategory', 'amount', 'omerchant', 'category']]
 transactions.to_csv('transactions.csv')
 
